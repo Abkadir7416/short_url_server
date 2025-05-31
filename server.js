@@ -1,7 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import connectDB from './src/config/mongo.config.js';
-// import shortUrlRoutes from './src/routes/short_url.route.js';
+import shortUrlRoutes from './src/routes/short_url.route.js';
+import { errorHandler } from './src/utils/errorHandler.js';
 
 
 
@@ -22,9 +23,9 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-// app.use('/api', shortUrlRoutes);
+app.use('/api', shortUrlRoutes);
 
-
+app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;

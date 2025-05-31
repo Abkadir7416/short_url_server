@@ -11,5 +11,8 @@ export const saveShortURL = async (originalUrl, shorted_URL) => {
 
 export const getShortURL = async (shortCode) => {
     const short_URL = await Url.findOne({ shortCode: shortCode });
+    if(!short_URL){
+        throw new Error('url not found!')
+    }
     return short_URL;
 };
